@@ -2,7 +2,7 @@
 resource "azurerm_public_ip" "frontend" {
   name                = "frontend"
   location            = "Denmark East"
-  resource_group_name = "denmark-east-rg"
+  resource_group_name = "pomegranate"
   allocation_method   = "Static"
 }
 
