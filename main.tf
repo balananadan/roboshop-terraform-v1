@@ -26,14 +26,14 @@ resource "azurerm_linux_virtual_machine" "frontend" {
   network_interface_ids = [azurerm_network_interface.frontend.id]
   size                  = "Standard_B1s"
 
-  source_image_id = "/subscriptions/3f2e42e1-ca06-4a99-8c56-be8d8ba306db/resourceGroups/denmark-east-rg/providers/Microsoft.Compute/galleries/rhel10/images/1.0.0/versions/1.0.0"
+  source_image_id = "/subscriptions/5d6d5b42-ee4c-46d9-aed6-49fd22f441fe/resourceGroups/pomegranate/providers/Microsoft.Compute/galleries/Pomo/images/1.1.0/versions/1.1.0"
 
   os_disk {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
 
-  admin_password = "DevOps@123456"
+  admin_password = "bala@1234567"
   admin_username = "devops"
 
   disable_password_authentication = false
@@ -45,7 +45,7 @@ resource "azurerm_linux_virtual_machine" "frontend" {
 
 resource "azurerm_dns_a_record" "frontend" {
   name                = "frontend-dev"
-  zone_name           = "rdevopsb89.online"
+  zone_name           = "piple.site"
   resource_group_name = "denmark-east-rg"
   ttl                 = 30
   records             = [azurerm_network_interface.frontend.private_ip_address]
