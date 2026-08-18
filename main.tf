@@ -9,7 +9,7 @@ resource "azurerm_public_ip" "frontend" {
 resource "azurerm_network_interface" "frontend" {
   name                = "frontend-nic"
   location            = "Denmark East"
-  resource_group_name = "denmark-east-rg"
+  resource_group_name = "pomegranate"
 
   ip_configuration {
     name                          = "frontend-nic"
@@ -22,7 +22,7 @@ resource "azurerm_network_interface" "frontend" {
 resource "azurerm_linux_virtual_machine" "frontend" {
   name                  = "frontend-vm"
   location              = "Denmark East"
-  resource_group_name   = "denmark-east-rg"
+  resource_group_name   = "pomegranate"
   network_interface_ids = [azurerm_network_interface.frontend.id]
   size                  = "Standard_B1s"
 
@@ -46,7 +46,7 @@ resource "azurerm_linux_virtual_machine" "frontend" {
 resource "azurerm_dns_a_record" "frontend" {
   name                = "frontend-dev"
   zone_name           = "piple.site"
-  resource_group_name = "denmark-east-rg"
+  resource_group_name = "pomegranate"
   ttl                 = 30
   records             = [azurerm_network_interface.frontend.private_ip_address]
 }
